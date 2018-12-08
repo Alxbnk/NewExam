@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<title>Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+
+<head th:include="head :: styles">
+    <!--<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>-->
+</head>
+<body class="w3-light-grey">
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+    </div>
+</div>
+<br><br><br><br><br>
+<div class="container">
+    </head>
+
+    <header th:include="header :: navbar"></header>
+
+    <h1>Login</h1>
+
+    <div class="alert alert-danger alert-dismissible" th:classappend="${loginError} ? '' : 'd-none'">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Login Error!</strong> Wrong username or password!
+    </div>
+
+    <form method="Post" th:action="@{/login}">
+
+        <label>Username:</label>
+        <input type="text" class="form-control mr-sm-2" th:name="username"/>
+
+        <label>Password:</label>
+        <input type="password" class="form-control mr-sm-2" th:name="password"/>
+
+        <br>
+
+        <input class="btn btn-secondary" type="reset" value="Reset">
+
+        <button class="btn btn-primary" type="submit">Login</button>
+
+    </form>
+    <br/>
+    <br>
+    <a th:href="@{/signup}" ><p> Sign up</p></a>
+    <!--<a href="/createuser">
+        <button class="btn btn-success"><span class="fas fa-plus"></span> Create new User</button>
+    </a>-->
+
+</div>
+</body>
+</html>

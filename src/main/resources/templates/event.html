@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<title>FF Event</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<style>
+    .notification {
+        background-color: #555;
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        position: relative;
+        display: inline-block;
+        border-radius: 5px;
+    }
+
+    .notification:hover {
+        background: grey;
+    }
+
+    .notification .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        padding: 1px 4px;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+    }
+</style>
+<body class="w3-light-grey">
+
+<!-- NavbarBlock (sit on top) -->
+    <th:block th:switch="${role}">
+
+        <div th:case="'1'" class="w3-row">
+
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+                    <!-- Float links to the right. Hide them on small screens -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="/admin/verify" class="notification">
+                            <span>Request</span>
+                            <span class="badge">2</span>
+                        </a>
+                        <a href="/event/logged" class="w3-bar-item w3-button"><span th:text="${username}"></span></a>
+                        <a href="#about" class="w3-bar-item w3-button">About</a>
+                        <a href="#kitchens" class="w3-bar-item w3-button">Kitchens</a>
+                        <a href="#judges" class="w3-bar-item w3-button">Judges</a>
+                        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+                        <a class="w3-bar-item w3-button" href="/logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:case="'2'" class="w3-row">
+
+            <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+                <a href="javascript:void(0)" onclick="w3_close()"
+                   class="w3-bar-item w3-button">Close Menu</a>
+                <a th:href="@{/kitchen/form}" onclick="w3_close()" class="w3-bar-item w3-button">Kitchen</a>
+                <a th:href="@{/judge/form}" onclick="w3_close()" class="w3-bar-item w3-button">Judge</a>
+            </nav>
+
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+                    <div class="w3-bar-item w3-button" onclick="w3_open()">Apply</div>
+                    <!-- Float links to the right. Hide them on small screens -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="/index_logged" class="w3-bar-item w3-button"><span th:text="${username}"></span></a>
+                        <a href="#about" class="w3-bar-item w3-button">About</a>
+                        <a href="#kitchens" class="w3-bar-item w3-button">Kitchens</a>
+                        <a href="#judges" class="w3-bar-item w3-button">Judges</a>
+                        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+                        <a class="w3-bar-item w3-button" href="/logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:case="'3'" class="w3-row">
+
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+                    <!-- Float links to the right. Hide them on small screens -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="/index_logged" class="w3-bar-item w3-button"><span th:text="${username}"></span></a>
+                        <a href="#about" class="w3-bar-item w3-button">About</a>
+                        <a href="#kitchens" class="w3-bar-item w3-button">Kitchens</a>
+                        <a href="#judges" class="w3-bar-item w3-button">Judges</a>
+                        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+                        <a class="w3-bar-item w3-button" href="/logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:case="'4'" class="w3-row">
+
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+                    <div class="w3-bar-item w3-button" onclick="w3_open()">Apply</div>
+                    <!-- Float links to the right. Hide them on small screens -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="#about" class="w3-bar-item w3-button">About</a>
+                        <a href="#kitchens" class="w3-bar-item w3-button">Kitchens</a>
+                        <a href="#judges" class="w3-bar-item w3-button">Judges</a>
+                        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+                        <a href="/login" class="w3-bar-item w3-button">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </th:block>
+
+<!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img class="w3-image" src="https://image.isu.pub/150515115137-5906d3b40b9720b51af3a1cc32842b6b/jpg/page_1.jpg" alt="Architecture" width="1500" height="800">
+        <div class="w3-display-middle w3-margin-top w3-center">
+            <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>FF</b></span> <span class="w3-hide-small w3-text-light-grey">EVENT</span></h1>
+        </div>
+    </header>
+
+<!-- Page content -->
+    <div class="w3-content w3-padding" style="max-width:1564px">
+
+        <!-- About Section -->
+        <div class="w3-container w3-padding-32" id="about" th:each="event : ${events}">
+            <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h2>
+            <h2 th:text="${event.description}"></h2>
+        </div>
+
+        <!-- Kitchen Section -->
+        <div class="w3-container w3-padding-32" id="kitchens">
+            <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Kitchens</h2>
+        </div>
+
+        <div th:each = "kitchen : ${kitchens}">
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-topleft w3-black w3-padding" th:text = "${kitchen.name}"></div>
+                    <a th:href="${'kitchen_admin/' + kitchen.id}">
+                        <img th:src="${kitchen.picture}" alt="Kitchen" style="width:90%">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judge Section -->
+        <div class="w3-container w3-padding-32" id="judges">
+            <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Judges</h2>
+        </div>
+
+        <div class="w3-grayscale" th:each="judge : ${judges}">
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <h3><b th:text="${judge.firstName}"></b></h3>
+                <h3><b th:text="${judge.lastName}"></b></h3>
+                <p class="w3-opacity" th:text="${judge.profession}"></p>
+                <p><b th:text="${judge.jobdescription}"></b></p>
+                <a th:href="${'judge_admin/' + judge.idJ}">
+                    <p><button class="w3-button w3-dark-grey w3-block">LÆS MER' DIN FED KO</button></p>
+                </a>
+                <br>
+            </div>
+
+        </div>
+
+        <!-- Contact Section -->
+        <div class="w3-container w3-padding-32" id="contact">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+            <p>Lets get in touch and talk about your next project.</p>
+            <form action="/action_page.php" target="_blank">
+                <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+                <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
+                <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
+                <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
+                <button class="w3-button w3-black w3-section" type="submit">
+                    <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                </button>
+            </form>
+        </div><!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-grey w3-padding-16">
+        <p>Homepage: <a href="https://www.frokostfirmaet.dk/" title="Frokost Firmaet" target="_blank" class="w3-hover-text-green">Frokost Firmaet</a></p>
+    </footer>
+</body>
+</html>

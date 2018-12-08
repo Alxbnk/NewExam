@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>FF Event</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+    </style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+        </div>
+    </div>
+</div>
+<br><br>
+
+    <th:block th:switch="${role}">
+
+        <div th:case="'2'" class="w3-row">
+
+            <div>
+
+                <h1>Apply for kitchen</h1>
+                <form th:method="Post" th:action="@{/kitchen/form/}">
+
+                    <p>Name: </p><input type="text" size="40" th:field="${kitchen.name}"/>
+                    <br>
+                    <p>Address: </p><input type="text" size="40" th:field="${kitchen.address}"/>
+                    <br>
+                    <p>Description: </p><textarea rows="4" cols="50" th:field="${kitchen.description}"></textarea>
+                    <br>
+                    <p>Picture link:</p><input type="text" size="110" th:field="${kitchen.picture}">
+                    <br><br>
+                    <input type="submit" class="btn btn-success" value="Apply">
+
+                </form>
+            </div>
+        </div>
+
+        <div th:case="'3'">
+
+            //APPLY FOR JUDGE
+
+        </div>
+
+    </th:block>
+
+<br><br>
+
+<!-- Footer -->
+<footer class="w3-center w3-grey w3-padding-16">
+    <p>Homepage: <a href="https://www.frokostfirmaet.dk/" title="Frokost Firmaet" target="_blank" class="w3-hover-text-green">Frokost Firmaet</a></p>
+</footer>
+</body>
+</html>

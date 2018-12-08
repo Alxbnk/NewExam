@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<title>FF Event</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<style>
+    .notification {
+        background-color: #555;
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        position: relative;
+        display: inline-block;
+        border-radius: 5px;
+    }
+
+    .notification:hover {
+        background: grey;
+    }
+
+    .notification .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        padding: 1px 4px;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+    }
+</style>
+<body class="w3-light-grey">
+
+<!-- NavbarBlock (sit on top) -->
+    <th:block th:switch="${role}">
+
+        <div th:case="'1'" class="w3-row">
+
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+                    <!-- Float links to the right. Hide them on small screens -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="/admin/verify" class="notification">
+                            <span>Request</span>
+                            <span class="badge">2</span>
+                        </a>
+                        <a href="/event/logged" class="w3-bar-item w3-button"><span th:text="${username}"></span></a>
+                        <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:case="*">
+
+            <div class="w3-top">
+                <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                    <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+                    <!-- Float links to the right. Hide them on small screens -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="/index_logged" class="w3-bar-item w3-button"><span th:text="${username}"></span></a>
+                        <a class="w3-bar-item w3-button" href="/logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </th:block>
+
+    <br><br>
+    <!-- w3-content defines a container for fixed size centered content,
+    and is wrapped around the whole page content, except for the footer in this example-->
+    <div class="w3-content" style="max-width: 600px" >
+        <!-- Header -->
+        <div class="w3-container w3-center w3-padding-32">
+            <h1><b>Frokost Firmaet</b></h1>
+            <p> Welcome to <span class="w3-tag">Events</span></p>
+        </div>
+        <!--<div class="alert alert-success alert-dismissible" th:classappend="${loginsuccess} ? '' : 'd-none'">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Login success!</strong> You are now logged in as <span th:text="${username}"></span>
+        </div>-->
+        <!-- Grid -->
+        <div class="w3-row">
+
+            <!-- Blog entries -->
+            <div class="w3-col l8 s12">
+                <!-- Blog entry -->
+                <div class="w3-card-4 w3-margin w3-white" th:each="event : ${events}">
+                    <img src="https://image.isu.pub/150515115137-5906d3b40b9720b51af3a1cc32842b6b/jpg/page_1.jpg" alt="Nature" style="width:100%">
+                    <div class="w3-container">
+                        <h3><b th:text="${event.name}"></b></h3>
+                        <h5><span class="w3-opacity" th:text="${event.date}"></span></h5>
+                    </div>
+
+                    <div class="w3-container">
+                        <div class="w3-row">
+                            <div class="w3-col m8 s12">
+                                <a th:href="@{/event/logged}"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-grey w3-padding-32">
+        <p>Homepage: <a href="https://www.frokostfirmaet.dk/" title="Frokost Firmaet" target="_blank" class="w3-hover-text-green">Frokost Firmaet</a></p>
+    </footer>
+</body>
+</html>

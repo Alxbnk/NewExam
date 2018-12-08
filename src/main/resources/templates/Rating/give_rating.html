@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Give-rating</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+    </style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<div>
+
+    <h1>Give Rating to (kitchen)</h1>
+    <form th:method="Post" th:action="@{/rating/give_rating}">
+
+        <p>Appearance score: </p><input type="int" size="10" th:field="${rating.ascore}"/>
+        <br>
+        <p>Taste score: </p><input type="int" size="10" th:field="${rating.tscore}"/>
+        <br>
+        <p>Evaluation: </p><textarea rows="4" cols="50" th:field="${rating.evaluation}"></textarea>
+        <br>
+        <input type="submit" class="btn btn-success" value="Rate">
+    </form>
+</div>
+<br><br>
+
+<!-- Footer -->
+<footer class="w3-center w3-grey w3-padding-16">
+    <p>Homepage: <a href="https://www.frokostfirmaet.dk/" title="Frokost Firmaet" target="_blank" class="w3-hover-text-green">Frokost Firmaet</a></p>
+</footer>
+</body>
+</html>

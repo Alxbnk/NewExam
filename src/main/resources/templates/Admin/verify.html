@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<title>Kitchen-admin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<th:block th:switch="${role}">
+
+    <div th:case="'1'" class="w3-row">
+
+        <!-- Navbar (sit on top) -->
+        <div class="w3-top">
+            <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+                <!-- Float links to the right. Hide them on small screens -->
+                <div class="w3-right w3-hide-small">
+                    <a href="/event" class="w3-bar-item w3-button"><span th:text="${username}"></span></a>
+                    <a class="w3-bar-item w3-button" href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="w3-container">
+            <h1>KITCHENS TO BE VERIFIED :-*</h1>
+            <table class="w3-table-all">
+                <thead>
+                <tr class="w3-light-grey">
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Verified</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr th:each="kitchen : ${kitchens}">
+                    <td th:text="${kitchen.name}"/>
+                    <td th:text="${kitchen.address}"/>
+                    <!-- If verified is true then YES, else NO -->
+                    <td th:if="${kitchen.verified}">YES</td>
+                    <td th:unless="${kitchen.verified}">NO</td>
+                    <!-- Give the option to verify the kitchen -->
+                    <td th:if="not ${kitchen.verified}">
+                        <a type="hidden" class="btn btn-success" name="_method" value="put" th:href="${'admin/verify/' + kitchen.id}"
+                           style="font-size: 22px">&#9989;</a>
+
+                        <a style="font-size: 22px"> &#10060; </a>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <br><br>
+
+    </div>
+
+    <div th:case="*" class="w3-row">
+
+        <p>You are not supposed to be here, no one's supposed to be here...</p>
+    </div>
+
+</th:block>
+
+<!-- Footer -->
+<footer class="w3-center w3-grey w3-padding-16">
+    <p>Homepage: <a href="https://www.frokostfirmaet.dk/" title="Frokost Firmaet" target="_blank" class="w3-hover-text-green">Frokost Firmaet</a></p>
+</footer>
+
+
+</body>
+</html>

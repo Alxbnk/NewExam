@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit-judge</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+    </style>
+</head>
+<body class="w3-light-grey">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a th:href="@{/index_logged}" class="w3-bar-item w3-button"><b>FF</b> EVENT</a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+        </div>
+    </div>
+</div>
+<br><br>
+
+    <th:block th:switch="${role}">
+
+        <div th:case="'1'" class="w3-row">
+
+            <h1>Edit judge: <span th:text="${judge.firstName}"></span></h1>
+            <form th:method="Post" th:action="@{/admin/edit/judge/">
+                <input type="hidden" th:field="${judge.idJ}"/>
+
+                <p>Firstname: </p><input type="text" size="40" th:field="${judge.firstName}"/>
+                <br>
+                <p>Lastname: </p><input type="text" size="40" th:field="${judge.lastName}"/>
+                <br>
+                <p>Profession</p><input type="text" size="110" th:field="${judge.profession}">
+                <br>
+                <p>Job Description: </p><textarea rows="4" cols="50" th:field="${judge.jobdescription}"></textarea>
+                <br><br>
+                <input type="submit" class="btn btn-success" value="Apply"><!-- TO BE DONE -->
+
+            </form>
+        </div>
+
+        <div th:case="'3'" class="w3-row">
+
+            <h1>Edit your informations:</h1>
+            <form th:method="Post" th:action="@{/judge/edit/judge/}">
+                <input type="hidden" th:field="${judge.idJ}"/>
+
+                <p>Firstname: </p><input type="text" size="40" th:field="${judge.firstname}"/>
+                <br>
+                <p>Lastname: </p><input type="text" size="40" th:field="${judge.lastname}"/>
+                <br>
+                <p>Profession</p><input type="text" size="110" th:field="${judge.profession}">
+                <br>
+                <p>Job Description: </p><textarea rows="4" cols="50" th:field="${judge.jobdescription}"></textarea>
+                <br><br>
+                <input type="submit" class="btn btn-success" value="Apply"><!-- TO BE DONE -->
+
+            </form>
+        </div>
+
+        <div th:case="*" class="w3-row">
+            <p>You are not supposed to be here, no one's supposed to be here...</p>
+        </div>
+
+    </th:block>
+<br><br>
+
+<!-- Footer -->
+<footer class="w3-center w3-grey w3-padding-16">
+    <p>Homepage: <a href="https://www.frokostfirmaet.dk/" title="Frokost Firmaet" target="_blank" class="w3-hover-text-green">Frokost Firmaet</a></p>
+</footer>
+</body>
+</html>
